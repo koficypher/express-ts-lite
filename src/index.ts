@@ -1,7 +1,8 @@
-import { createServer } from '@kernel/server'
+import createServer from './kernel/server'
 import { AddressInfo } from 'net'
 import http from 'http'
-import { logger } from '@services/logger'
+import config from './config'
+import { logger } from './services/logger'
 
 const host = process.env.HOST || '0.0.0.0'
 const port  = process.env.PORT || '5000'
@@ -9,6 +10,8 @@ const port  = process.env.PORT || '5000'
 const startServer = async () => {
 
     const app = await createServer()
+
+    console.log(config)
 
     const server = http.createServer(app).listen({host, port}, () => {
        const addressInfo = server.address() as AddressInfo

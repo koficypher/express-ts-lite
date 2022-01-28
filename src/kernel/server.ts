@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import  errorHandler from '@middlewares/errorHandler'
+import  errorHandler from '../middlewares/errorHandler'
 
 const createServer = (): express.Application => {
 
@@ -15,7 +15,7 @@ const createServer = (): express.Application => {
     app.get('/health', (_req, res) => {
        res.send({
            "status": "success",
-           "message": "all systems blue"
+           "message": "all systems green"
        })
     })
 
@@ -24,4 +24,4 @@ const createServer = (): express.Application => {
     return app
 }
 
-export { createServer }
+export default createServer
