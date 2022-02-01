@@ -11,7 +11,7 @@ const startServer = async () => {
 
     const app = await createServer()
 
-    console.log(config)
+  //  console.log(config)
 
     const server = http.createServer(app).listen({host, port}, () => {
        const addressInfo = server.address() as AddressInfo

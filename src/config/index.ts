@@ -1,7 +1,6 @@
 import dotenvExtended from 'dotenv-extended'
 import dotenvParseVariables from 'dotenv-parse-variables'
-import 'path'
-import path from 'path/posix'
+
 
 type LogLevel = 'silent' | 'error' | 'warn' | 'info' | 'http' | 'verbose' | 'debug' | 'silly'
 
@@ -12,7 +11,7 @@ interface Config {
 
 const env = dotenvExtended.load({
     path: process.env.ENV_FILE,
-    defaults: './../.env.defaults',
+    defaults: '../../.env.defaults',
     schema: '../../.env.example',
     includeProcessEnv: true,
     silent: false,
