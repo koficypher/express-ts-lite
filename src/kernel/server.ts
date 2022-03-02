@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import  errorHandler from '../middlewares/errorHandler'
+import loggerMiddleware from '../middlewares/loggerMiddleware'
 
 const createServer = (): express.Application => {
 
@@ -8,6 +9,7 @@ const createServer = (): express.Application => {
 
     app.use(express.urlencoded({ extended: true }))
     app.use(cors())
+    app.use(loggerMiddleware)
     app.use(express.json())
   
     app.disable('x-powered-by')

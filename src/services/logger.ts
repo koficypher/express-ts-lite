@@ -8,12 +8,22 @@ const prettyJson = winston.format.printf(info => {
   return `${info.timestamp} ${info.label || '-'} ${info.level}: ${info.message}`
 })
 
+const colors = {
+  error: 'red',
+  warn: 'yellow',
+  info: 'green',
+  http: 'magenta',
+  debug: 'cyan',
+}
+
+winston.addColors(colors);
+
 const LoggerWrapper = (): winston.Logger => {
   return winston.createLogger({
     level: config.Log_Level === 'silent' ? undefined : config.Log_Level,
     silent: config.Log_Level === 'silent',
     format: winston.format.combine(
-      winston.format.colorize(),
+      winston.format.colorize({ all: true }),
       winston.format.prettyPrint(),
       winston.format.splat(),
       winston.format.simple(),
